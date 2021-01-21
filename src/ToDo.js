@@ -13,17 +13,18 @@ export class ToDo {
     }
 
     loadTasks() {
-        return fetch('https://coderoad--sandbox-default-rtdb.firebaseio.com/todo/.json')
+        return fetch('https://coderoad--sandbox-default-rtdb.firebaseio.com/todo-one-instance/.json')
             .then((response) => response.json())
             .then((data) => {
-                this.tasks = data
+              console.log(data)
+                this.tasks = data || []
                 this.render()
             })
     }
 
     setTasks(newTasks) {
         return fetch(
-            'https://coderoad--sandbox-default-rtdb.firebaseio.com/todo/.json',
+            'https://coderoad--sandbox-default-rtdb.firebaseio.com/todo-one-instance/.json',
             {
                 method: 'PUT',
                 body: JSON.stringify(newTasks)
